@@ -6,7 +6,7 @@
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>	+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/29 16:23:03 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:56:23 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,6 @@ Animal::~Animal(void)
 std::string		Animal::getType(void) const
 {
 	return (this->type);
-}
-
-void			Animal::makeSound(void) const
-{
-	std::cout << "..." << std::endl;
-}
-
-void	Animal::sleep(void)
-{
-}
-
-void	Animal::eat(void)
-{
-}
-
-void	Animal::play(void)
-{
 }
 
 Animal			&Animal::operator=(Animal const &animal)

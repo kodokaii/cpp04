@@ -6,7 +6,7 @@
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/29 16:47:08 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:56:13 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ class Animal
 						Animal(Animal const &animal);
 		virtual			~Animal(void);
 		std::string		getType(void) const;
-		virtual void	makeSound(void) const;
-		virtual void	sleep(void);
-		virtual void	eat(void);
-		virtual void	play(void);
+		virtual void	makeSound(void) const = 0;
+		virtual void	sleep(void) = 0;
+		virtual void	eat(void) = 0;
+		virtual void	play(void) = 0;
 		Animal			&operator=(Animal const &animal);
 };
 
