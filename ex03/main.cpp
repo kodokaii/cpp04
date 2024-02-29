@@ -6,37 +6,57 @@
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>	+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/29 17:00:36 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:20:06 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
+#include "MaterialSource.hpp"
+#include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
-#define ARRAY_SIZE	10
+void	learn(IMateriaSource *src)
+{
+	AMateria	*ice = new Ice();
+	AMateria	*cure = new Cure();
+
+	src->learnMateria(ice);
+	src->learnMateria(cure);
+
+	delete ice;
+	delete cure;
+}
 
 int	main(void)
 {
-	Animal	*animal_array[ARRAY_SIZE];
-	//Animal	animal;
+	IMateriaSource	*src = new MaterialSource();
+	ICharacter		*me = new Character("me");
+	ICharacter		*bob = new Character("bob");
+	AMateria		*ice;
+	AMateria		*cure;
 
-	for (unsigned int i(0); i < ARRAY_SIZE; i++)
-	{
-		if (i * 2 < ARRAY_SIZE)
-			animal_array[i] = new Dog();
-		else
-			animal_array[i] = new Cat();
-	}
+	learn(src);
+	ice = src->createMateria("ice");
+	cure = src->createMateria("cure");
+	
+	me->equip(ice);
+	me->equip(cure);
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
 	std::cout << std::endl;
-	for (unsigned int i(0); i < ARRAY_SIZE; i++)
-	{
-		animal_array[i]->makeSound();
-		animal_array[i]->eat();
-		animal_array[i]->play();
-		animal_array[i]->sleep();
-	}
-	std::cout << std::endl;
-	for (unsigned int i(0); i < ARRAY_SIZE; i++)
-		delete animal_array[i];
+	me->unequip(0);
+	me->equip(cure);
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+	delete ice;
+	delete cure;
+
 	return (0);
 }
