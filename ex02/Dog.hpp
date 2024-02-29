@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongDog.hpp                                       :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/29 12:55:08 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:30:10 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGDOG_H
-# define WRONGDOG_H
+#ifndef DOG_H
+# define DOG_H
 
-# include "WrongAnimal.hpp"
+# include "Brain.hpp"
+# include "Animal.hpp"
 
-class WrongDog: public WrongAnimal
+class Dog: public Animal
 {
+	private:
+		Brain	*brain;
+
 	public:
-					WrongDog(void);
-					WrongDog(WrongDog const &wrongDog);
-					~WrongDog(void);
-		void		makeSound(void) const;
-		WrongDog	&operator=(WrongDog const &wrongDog);
+				Dog(void);
+				Dog(Dog const &dog);
+				~Dog(void);
+		void	makeSound(void) const;
+		void	sleep(void);
+		void	eat(void);
+		void	play(void);
+		Dog		&operator=(Dog const &dog);
 };
 
 #endif

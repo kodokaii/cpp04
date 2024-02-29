@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongDog.cpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>	+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/29 13:23:18 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:36:58 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongDog.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
-WrongDog::WrongDog(void): WrongAnimal("wrongDog")
-{
-	std::cout << "WrongDog: Default constructor called" << std::endl;
-}
+#define ARRAY_SIZE	10
 
-WrongDog::WrongDog(WrongDog const &wrongDog): WrongAnimal(wrongDog)
+int	main(void)
 {
-	std::cout << "WrongDog: Copy constructor called" << std::endl;
-}
+	Animal	*animal_array[ARRAY_SIZE];
 
-WrongDog::~WrongDog(void)
-{
-	std::cout << "WrongDog: destructor called" << std::endl;
-}
-
-void		WrongDog::makeSound(void) const
-{
-	std::cout << "Ouaf !" << std::endl;
-}
-
-WrongDog	&WrongDog::operator=(WrongDog const &wrongDog)
-{
-	*static_cast<WrongAnimal *>(this) = wrongDog;
-	return (*this);
+	for (unsigned int i(0); i < ARRAY_SIZE; i++)
+	{
+		if (i * 2 < ARRAY_SIZE)
+			animal_array[i] = new Dog();
+		else
+			animal_array[i] = new Cat();
+	}
+	std::cout << std::endl;
+	for (unsigned int i(0); i < ARRAY_SIZE; i++)
+	{
+		animal_array[i]->makeSound();
+		animal_array[i]->eat();
+		animal_array[i]->play();
+		animal_array[i]->sleep();
+	}
+	std::cout << std::endl;
+	for (unsigned int i(0); i < ARRAY_SIZE; i++)
+		delete animal_array[i];
+	return (0);
 }

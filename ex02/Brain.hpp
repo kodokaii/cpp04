@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 10:58:17 by nlaerema          #+#    #+#             */
-/*   Updated: 2024/02/29 13:16:10 by nlaerema         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:06:45 by nlaerema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_H
-# define WRONGANIMAL_H
+#ifndef BRAIN_H
+# define BRAIN_H
 
 # include <string>
 # include <iostream>
 
-class WrongAnimal
+# define IDEAS_COUNT	100
+
+class Brain
 {
 	protected:
-		std::string	type;
+		std::string		ideas[IDEAS_COUNT];
+		unsigned int	ideasCount;
 
 	public:
-						WrongAnimal(void);
-						WrongAnimal(std::string const &type);
-						WrongAnimal(WrongAnimal const &wrongAnimal);
-						~WrongAnimal(void);
-		std::string		getType(void) const;
-		void			makeSound(void) const;
-		WrongAnimal		&operator=(WrongAnimal const &wrongAnimal);
+							Brain(void);
+							Brain(Brain const &brain);
+							~Brain(void);
+		void				newIdea(std::string const &idea);
+		std::string			getIdea(unsigned int index) const;
+		unsigned int		getIdeasCount(void) const;
+		Brain				&operator=(Brain const &brain);
 };
 
 #endif
