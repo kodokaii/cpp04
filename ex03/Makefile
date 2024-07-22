@@ -13,7 +13,7 @@ SRC 		= AMateria.cpp\
 			  Floor.cpp\
 			  Ice.cpp\
 			  main.cpp\
-			  MaterialSource.cpp
+			  MateriaSource.cpp
 
 OBJ 		= $(SRC:.cpp=.o)
 

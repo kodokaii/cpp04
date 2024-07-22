@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MaterialSource.cpp                                 :+:      :+:    :+:   */
+/*   MateriaSource.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlaerema <nlaerema@student.42lehavre.fr>	+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MaterialSource.hpp"
+#include "MateriaSource.hpp"
 
-MaterialSource::MaterialSource(void)
+MateriaSource::MateriaSource(void)
 {
 	for (unsigned int i(0); i < MAX_LEARN_MATERIA; i++)
 		this->materias[i] = NULL;
 }
 
-MaterialSource::MaterialSource(MaterialSource const &materialSource)
+MateriaSource::MateriaSource(MateriaSource const &materiaSource)
 {
 	for (unsigned int i(0); i < MAX_LEARN_MATERIA; i++)
-		this->materias[i] = materialSource.materias[i];
+		this->materias[i] = materiaSource.materias[i];
 }
 
-MaterialSource::~MaterialSource(void)
+MateriaSource::~MateriaSource(void)
 {
 	for (unsigned int i(0); i < MAX_LEARN_MATERIA; i++)
 	{
@@ -33,7 +33,7 @@ MaterialSource::~MaterialSource(void)
 	}
 }
 
-void			MaterialSource::learnMateria(AMateria *materia)
+void			MateriaSource::learnMateria(AMateria *materia)
 {
 	unsigned int	idx;
 
@@ -47,7 +47,7 @@ void			MaterialSource::learnMateria(AMateria *materia)
 	}
 }
 
-AMateria		*MaterialSource::createMateria(std::string const &type)
+AMateria		*MateriaSource::createMateria(std::string const &type)
 {
 	unsigned int	idx;
 
@@ -59,14 +59,14 @@ AMateria		*MaterialSource::createMateria(std::string const &type)
 	return (NULL);
 }
 
-MaterialSource	&MaterialSource::operator=(MaterialSource const &materialSource)
+MateriaSource	&MateriaSource::operator=(MateriaSource const &materiaSource)
 {
 	for (unsigned int i(0); i < MAX_LEARN_MATERIA; i++)
 	{
 		if (this->materias[i])
 			delete this->materias[i];
-		if (materialSource.materias[i])
-			this->materias[i] = materialSource.materias[i]->clone();
+		if (materiaSource.materias[i])
+			this->materias[i] = materiaSource.materias[i]->clone();
 		else
 			this->materias[i] = NULL;
 	}

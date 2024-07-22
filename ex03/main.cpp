@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MaterialSource.hpp"
+#include "MateriaSource.hpp"
 #include "Character.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
@@ -29,7 +29,7 @@ void	learn(IMateriaSource *src)
 
 int	main(void)
 {
-	IMateriaSource	*src = new MaterialSource();
+	IMateriaSource	*src = new MateriaSource();
 	ICharacter		*me = new Character("me");
 	ICharacter		*bob = new Character("bob");
 	AMateria		*ice;
