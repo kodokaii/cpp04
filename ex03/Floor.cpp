@@ -26,19 +26,18 @@ Floor::Floor(Floor const &floor)
 
 Floor::~Floor(void)
 {
-	if (this->item)
-		delete this->item;
+	delete this->item;
 }
 
 void	Floor::leftItem(AMateria *item)
 {
-	if (this->item)
-		delete this->item;
+	delete this->item;
 	this->item = item;
 }
 
 Floor	&Floor::operator=(Floor const &floor)
 {
+	delete this->item;
 	if (floor.item)
 		this->item = floor.item->clone();
 	else
